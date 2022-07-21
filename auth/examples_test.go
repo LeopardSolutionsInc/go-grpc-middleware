@@ -22,7 +22,7 @@ func userClaimFromToken(struct{}) string {
 }
 
 // exampleAuthFunc is used by a middleware to authenticate requests
-func exampleAuthFunc(ctx context.Context) (context.Context, error) {
+func exampleAuthFunc(ctx context.Context, fullMethodName string) (context.Context, error) {
 	token, err := grpc_auth.AuthFromMD(ctx, "bearer")
 	if err != nil {
 		return nil, err
